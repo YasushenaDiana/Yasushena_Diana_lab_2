@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Scientists>
+  <Scientist FullName="Коваленко Олександр Петрович"
+             Faculty="Факультет комп'ютерних наук та кібернетики"
+             Department="Кафедра теорії та технології програмування"
+             Degree="Доктор фізико-математичних наук">
+    <Titles>
+      <Title Name="Старший дослідник" AssignedDate="2004-03-15" />
+      <Title Name="Доцент" AssignedDate="2008-06-20" />
+      <Title Name="Професор" AssignedDate="2015-12-01" />
+    </Titles>
+  </Scientist>
+
+  <Scientist FullName="Шевчук Ірина Василівна"
+             Faculty="Факультет комп'ютерних наук та кібернетики"
+             Department="Кафедра інтелектуальних програмних систем"
+             Degree="Кандидат технічних наук">
+    <Titles>
+      <Title Name="Доцент" AssignedDate="2017-02-10" />
+    </Titles>
+  </Scientist>
+
+  <Scientist FullName="Мельник Андрій Олегович"
+             Faculty="Факультет комп'ютерних наук та кібернетики"
+             Department="Кафедра теорії та технології програмування">
+    <Titles />
+  </Scientist>
+
+  <Scientist FullName="Бондаренко Наталія Сергіївна"
+             Faculty="Механіко-математичний факультет"
+             Department="Кафедра математичного аналізу"
+             Degree="Доктор фізико-математичних наук">
+    <Titles>
+      <Title Name="Доцент" AssignedDate="2006-04-25" />
+      <Title Name="Професор" AssignedDate="2013-09-30" />
+    </Titles>
+  </Scientist>
+
+  <Scientist FullName="Ткаченко Максим Ігорович"
+             Faculty="Механіко-математичний факультет"
+             Department="Кафедра алгебри та комп'ютерної математики"
+             Degree="Кандидат фізико-математичних наук">
+    <Titles>
+      <Title Name="Доцент" AssignedDate="2019-05-14" />
+    </Titles>
+  </Scientist>
+
+  <Scientist FullName="Кравченко Олена Миколаївна"
+             Faculty="Механіко-математичний факультет"
+             Degree="Кандидат фізико-математичних наук">
+    <Titles>
+      <Title Name="Старший дослідник" AssignedDate="2011-11-11" />
+    </Titles>
+  </Scientist>
+
+  <Scientist FullName="Олійник Тарас Богданович"
+             Faculty="Фізичний факультет"
+             Department="Кафедра теоретичної фізики"
+             Degree="Доктор фізико-математичних наук">
+    <Titles>
+      <Title Name="Старший дослідник" AssignedDate="2001-01-19" />
+      <Title Name="Професор" AssignedDate="2010-07-07" />
+    </Titles>
+  </Scientist>
+
+  <Scientist FullName="Лисенко Мар'яна Андріївна"
+             Faculty="Фізичний факультет"
+             Department="Кафедра оптики"
+             Degree="Кандидат фізико-математичних наук">
+    <Titles>
+      <Title Name="Доцент" />
+    </Titles>
+  </Scientist>
+
+  <Scientist FullName="Савченко Віктор Юрійович"
+             Faculty="Фізичний факультет">
+    <Titles />
+  </Scientist>
+
+  <Scientist FullName="Руденко Світлана Олександрівна"
+             Faculty="Хімічний факультет"
+             Department="Кафедра органічної хімії"
+             Degree="Доктор хімічних наук">
+    <Titles>
+      <Title Name="Доцент" AssignedDate="2009-10-02" />
+      <Title Name="Професор" AssignedDate="2018-03-29" />
+    </Titles>
+  </Scientist>
+
+  <Scientist FullName="Марченко Дмитро Васильович"
+             Faculty="Хімічний факультет"
+             Department="Кафедра аналітичної хімії"
+             Degree="Кандидат хімічних наук">
+    <Titles>
+      <Title Name="Старший дослідник" AssignedDate="2016-06-16" />
+      <Title Name="Доцент" AssignedDate="2021-12-22" />
+    </Titles>
+  </Scientist>
+
+  <Scientist FullName="Гончаренко Юлія Павлівна"
+             Faculty="Факультет комп'ютерних наук та кібернетики"
+             Department="Кафедра інтелектуальних програмних систем"
+             Degree="Доктор технічних наук">
+    <Titles>
+      <Title Name="Професор" AssignedDate="2020-01-31" />
+    </Titles>
+  </Scientist>
+</Scientists>
