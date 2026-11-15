@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Lab2"
+             x:Class="Lab2.MainPage"
+             Title="YasushenaDiana_xml"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{x:Static local:AppColors.Background}">
+
+    <ContentPage.Resources>
+        <Style x:Key="Btn" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="{x:Static local:AppColors.Surface}" />
+            <Setter Property="TextColor" Value="{x:Static local:AppColors.Text}" />
+            <Setter Property="BorderColor" Value="{x:Static local:AppColors.Border}" />
+            <Setter Property="BorderWidth" Value="1" />
+            <Setter Property="CornerRadius" Value="4" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="Padding" Value="14,0" />
+            <Setter Property="HeightRequest" Value="32" />
+            <Setter Property="MinimumHeightRequest" Value="0" />
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="PointerOver">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="{x:Static local:AppColors.TableHeader}" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Pressed">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="{x:Static local:AppColors.Border}" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Disabled" />
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+
+        <Style x:Key="PrimaryBtn" TargetType="Button" BasedOn="{StaticResource Btn}">
+            <Setter Property="BackgroundColor" Value="{x:Static local:AppColors.Primary}" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="BorderColor" Value="{x:Static local:AppColors.Primary}" />
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="PointerOver">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="{x:Static local:AppColors.PrimaryHover}" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Pressed">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="{x:Static local:AppColors.PrimaryHover}" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Disabled" />
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ExitBtn" TargetType="Button" BasedOn="{StaticResource Btn}">
+            <Setter Property="TextColor" Value="{x:Static local:AppColors.Danger}" />
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="PointerOver">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="{x:Static local:AppColors.DangerLight}" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Pressed">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="{x:Static local:AppColors.DangerLight}" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Disabled" />
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+
+        <Style x:Key="Caption" TargetType="Label">
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="TextColor" Value="{x:Static local:AppColors.TextSecondary}" />
+            <Setter Property="Margin" Value="0,12,0,4" />
+        </Style>
+
+        <Style x:Key="Selector" TargetType="Border">
+            <Setter Property="Padding" Value="10,7" />
+            <Setter Property="Stroke" Value="{x:Static local:AppColors.Border}" />
+            <Setter Property="StrokeThickness" Value="1" />
+            <Setter Property="StrokeShape" Value="RoundRectangle 4" />
+            <Setter Property="BackgroundColor" Value="{x:Static local:AppColors.Surface}" />
+        </Style>
+
+        <Style x:Key="SelectorText" TargetType="Label">
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="TextColor" Value="{x:Static local:AppColors.TextSecondary}" />
+            <Setter Property="Text" Value="(усі)" />
+            <Setter Property="LineBreakMode" Value="WordWrap" />
+            <Setter Property="VerticalOptions" Value="Center" />
+        </Style>
+
+        <Style x:Key="OptionBtn" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="{x:Static local:AppColors.TableHeader}" />
+            <Setter Property="TextColor" Value="{x:Static local:AppColors.Text}" />
+            <Setter Property="BorderWidth" Value="0" />
+            <Setter Property="CornerRadius" Value="4" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="Padding" Value="12,8" />
+            <Setter Property="MinimumHeightRequest" Value="0" />
+            <Setter Property="LineBreakMode" Value="WordWrap" />
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="PointerOver">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="{x:Static local:AppColors.PrimaryLight}" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Pressed">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="{x:Static local:AppColors.Border}" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Disabled" />
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ColumnLine" TargetType="BoxView">
+            <Setter Property="WidthRequest" Value="1" />
+            <Setter Property="HorizontalOptions" Value="Start" />
+            <Setter Property="Color" Value="{x:Static local:AppColors.Border}" />
+        </Style>
+
+        <Style x:Key="HeaderCell" TargetType="Label">
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="TextColor" Value="{x:Static local:AppColors.TextSecondary}" />
+            <Setter Property="Padding" Value="10,9" />
+        </Style>
+
+        <Style x:Key="Cell" TargetType="Label">
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="TextColor" Value="{x:Static local:AppColors.Text}" />
+            <Setter Property="Padding" Value="10,9" />
+            <Setter Property="LineBreakMode" Value="WordWrap" />
+        </Style>
+    </ContentPage.Resources>
+
+    <ContentPage.MenuBarItems>
+        <MenuBarItem Text="Файл">
+            <MenuFlyoutItem Text="Відкрити XML..." Clicked="OpenButton_Clicked" />
+            <MenuFlyoutItem Text="Зберегти як HTML..." Clicked="TransformButton_Clicked" />
+            <MenuFlyoutSeparator />
+            <MenuFlyoutItem Text="Вихід" Clicked="ExitButton_Clicked" />
+        </MenuBarItem>
+        <MenuBarItem Text="Пошук">
+            <MenuFlyoutItem Text="Знайти" Clicked="SearchButton_Clicked" />
+            <MenuFlyoutItem Text="Clear" Clicked="ClearButton_Clicked" />
+        </MenuBarItem>
+    </ContentPage.MenuBarItems>
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <Border Grid.Row="0"
+                StrokeThickness="0"
+                BackgroundColor="{x:Static local:AppColors.Surface}"
+                Padding="20,28,20,14">
+            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
+                <VerticalStackLayout VerticalOptions="Center" Spacing="2">
+                    <Label Text="Кадри науковців"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="{x:Static local:AppColors.Text}" />
+                    <Label x:Name="fileLabel"
+                           Text="Файл не відкрито"
+                           FontSize="13"
+                           TextColor="{x:Static local:AppColors.TextSecondary}"
+                           LineBreakMode="MiddleTruncation" />
+                </VerticalStackLayout>
+                <HorizontalStackLayout Grid.Column="1" Spacing="8" VerticalOptions="Center">
+                    <Button Text="Відкрити XML" Style="{StaticResource PrimaryBtn}" Clicked="OpenButton_Clicked" />
+                    <Button Text="Зберегти як HTML" Style="{StaticResource Btn}" Clicked="TransformButton_Clicked" />
+                    <Button Text="Вихід" Style="{StaticResource ExitBtn}" Clicked="ExitButton_Clicked" />
+                </HorizontalStackLayout>
+            </Grid>
+        </Border>
+        <BoxView Grid.Row="0" HeightRequest="1" VerticalOptions="End" Color="{x:Static local:AppColors.Border}" />
+
+        <Grid Grid.Row="1" ColumnDefinitions="300,*" ColumnSpacing="16" Padding="20,16,20,8">
+
+            <Border Grid.Column="0"
+                    Padding="16,14"
+                    Stroke="{x:Static local:AppColors.Border}"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 6"
+                    BackgroundColor="{x:Static local:AppColors.Surface}">
+                <Grid RowDefinitions="*,Auto">
+                    <ScrollView>
+                        <VerticalStackLayout>
+                            <Label Text="Параметри пошуку"
+                                   FontSize="15"
+                                   FontAttributes="Bold"
+                                   TextColor="{x:Static local:AppColors.Text}" />
+
+                            <Label Text="П.І.П." Style="{StaticResource Caption}" />
+                            <Border Style="{StaticResource Selector}">
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Selector_Tapped" CommandParameter="FullName" />
+                                </Border.GestureRecognizers>
+                                <Grid ColumnDefinitions="*,Auto">
+                                    <Label x:Name="fullNameLabel" Style="{StaticResource SelectorText}" />
+                                    <Label Grid.Column="1" Text="▾" FontSize="13" TextColor="{x:Static local:AppColors.TextSecondary}" VerticalOptions="Center" />
+                                </Grid>
+                            </Border>
+                            <Label Text="Факультет" Style="{StaticResource Caption}" />
+                            <Border Style="{StaticResource Selector}">
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Selector_Tapped" CommandParameter="Faculty" />
+                                </Border.GestureRecognizers>
+                                <Grid ColumnDefinitions="*,Auto">
+                                    <Label x:Name="facultyLabel" Style="{StaticResource SelectorText}" />
+                                    <Label Grid.Column="1" Text="▾" FontSize="13" TextColor="{x:Static local:AppColors.TextSecondary}" VerticalOptions="Center" />
+                                </Grid>
+                            </Border>
+                            <Label Text="Кафедра" Style="{StaticResource Caption}" />
+                            <Border Style="{StaticResource Selector}">
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Selector_Tapped" CommandParameter="Department" />
+                                </Border.GestureRecognizers>
+                                <Grid ColumnDefinitions="*,Auto">
+                                    <Label x:Name="departmentLabel" Style="{StaticResource SelectorText}" />
+                                    <Label Grid.Column="1" Text="▾" FontSize="13" TextColor="{x:Static local:AppColors.TextSecondary}" VerticalOptions="Center" />
+                                </Grid>
+                            </Border>
+                            <Label Text="Науковий ступінь" Style="{StaticResource Caption}" />
+                            <Border Style="{StaticResource Selector}">
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Selector_Tapped" CommandParameter="Degree" />
+                                </Border.GestureRecognizers>
+                                <Grid ColumnDefinitions="*,Auto">
+                                    <Label x:Name="degreeLabel" Style="{StaticResource SelectorText}" />
+                                    <Label Grid.Column="1" Text="▾" FontSize="13" TextColor="{x:Static local:AppColors.TextSecondary}" VerticalOptions="Center" />
+                                </Grid>
+                            </Border>
+                            <Label Text="Вчене звання" Style="{StaticResource Caption}" />
+                            <Border Style="{StaticResource Selector}">
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Selector_Tapped" CommandParameter="Title" />
+                                </Border.GestureRecognizers>
+                                <Grid ColumnDefinitions="*,Auto">
+                                    <Label x:Name="titleLabel" Style="{StaticResource SelectorText}" />
+                                    <Label Grid.Column="1" Text="▾" FontSize="13" TextColor="{x:Static local:AppColors.TextSecondary}" VerticalOptions="Center" />
+                                </Grid>
+                            </Border>
+
+                            <Label Text="Спосіб обробки XML" Style="{StaticResource Caption}" Margin="0,18,0,0" />
+                            <RadioButton x:Name="saxRadio" Content="SAX API" GroupName="method" IsChecked="True" TextColor="{x:Static local:AppColors.Text}" />
+                            <RadioButton x:Name="domRadio" Content="DOM API" GroupName="method" TextColor="{x:Static local:AppColors.Text}" />
+                            <RadioButton x:Name="linqRadio" Content="LINQ to XML" GroupName="method" TextColor="{x:Static local:AppColors.Text}" />
+                        </VerticalStackLayout>
+                    </ScrollView>
+
+                    <Grid Grid.Row="1" ColumnDefinitions="*,*" ColumnSpacing="8" Margin="0,14,0,0">
+                        <Button Text="Знайти" Style="{StaticResource PrimaryBtn}" Clicked="SearchButton_Clicked" />
+                        <Button Grid.Column="1" Text="Clear" Style="{StaticResource Btn}" Clicked="ClearButton_Clicked" />
+                    </Grid>
+                </Grid>
+            </Border>
+
+            <Border Grid.Column="1"
+                    Stroke="{x:Static local:AppColors.Border}"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 6"
+                    BackgroundColor="{x:Static local:AppColors.Surface}">
+                <Grid RowDefinitions="Auto,Auto,Auto,*">
+                    <Grid ColumnDefinitions="*,Auto" Padding="16,14,16,12">
+                        <Label Text="Результати"
+                               FontSize="15"
+                               FontAttributes="Bold"
+                               TextColor="{x:Static local:AppColors.Text}" />
+                        <Label x:Name="resultsHeader"
+                               Grid.Column="1"
+                               FontSize="13"
+                               TextColor="{x:Static local:AppColors.TextSecondary}"
+                               VerticalOptions="Center" />
+                    </Grid>
+
+                    <Grid Grid.Row="1"
+                          ColumnDefinitions="52,2*,2*,2*,1.6*,2.3*"
+                          BackgroundColor="{x:Static local:AppColors.TableHeader}">
+                        <Label Text="№" Style="{StaticResource HeaderCell}" Padding="16,9,4,9" />
+                        <Label Grid.Column="1" Text="П.І.П." Style="{StaticResource HeaderCell}" />
+                        <Label Grid.Column="2" Text="Факультет" Style="{StaticResource HeaderCell}" />
+                        <Label Grid.Column="3" Text="Кафедра" Style="{StaticResource HeaderCell}" />
+                        <Label Grid.Column="4" Text="Науковий ступінь" Style="{StaticResource HeaderCell}" />
+                        <Label Grid.Column="5" Text="Вчене звання (дата)" Style="{StaticResource HeaderCell}" />
+                        <BoxView Grid.Column="1" Style="{StaticResource ColumnLine}" />
+                        <BoxView Grid.Column="2" Style="{StaticResource ColumnLine}" />
+                        <BoxView Grid.Column="3" Style="{StaticResource ColumnLine}" />
+                        <BoxView Grid.Column="4" Style="{StaticResource ColumnLine}" />
+                        <BoxView Grid.Column="5" Style="{StaticResource ColumnLine}" />
+                    </Grid>
+                    <BoxView Grid.Row="2" HeightRequest="1" Color="{x:Static local:AppColors.Border}" />
+
+                    <CollectionView x:Name="resultsView" Grid.Row="3" SelectionMode="None">
+                        <CollectionView.EmptyView>
+                            <Label x:Name="emptyLabel"
+                                   Text="Відкрийте XML-файл, щоб почати пошук"
+                                   FontSize="13"
+                                   TextColor="{x:Static local:AppColors.TextSecondary}"
+                                   HorizontalTextAlignment="Center"
+                                   Margin="0,40,0,0" />
+                        </CollectionView.EmptyView>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="local:ScientistItem">
+                                <Grid RowDefinitions="Auto,1">
+                                    <Grid ColumnDefinitions="52,2*,2*,2*,1.6*,2.3*"
+                                          BackgroundColor="{Binding RowColor}">
+                                        <Label Text="{Binding Number}" Style="{StaticResource Cell}" Padding="16,9,4,9" TextColor="{x:Static local:AppColors.TextSecondary}" />
+                                        <Label Grid.Column="1" Text="{Binding FullName}" Style="{StaticResource Cell}" FontAttributes="Bold" />
+                                        <Label Grid.Column="2" Text="{Binding Faculty}" Style="{StaticResource Cell}" />
+                                        <Label Grid.Column="3" Text="{Binding Department}" Style="{StaticResource Cell}" />
+                                        <Label Grid.Column="4" Text="{Binding Degree}" Style="{StaticResource Cell}" />
+                                        <Label Grid.Column="5" Text="{Binding Titles}" Style="{StaticResource Cell}" />
+                                        <BoxView Grid.Column="1" Style="{StaticResource ColumnLine}" />
+                                        <BoxView Grid.Column="2" Style="{StaticResource ColumnLine}" />
+                                        <BoxView Grid.Column="3" Style="{StaticResource ColumnLine}" />
+                                        <BoxView Grid.Column="4" Style="{StaticResource ColumnLine}" />
+                                        <BoxView Grid.Column="5" Style="{StaticResource ColumnLine}" />
+                                    </Grid>
+                                    <BoxView Grid.Row="1" Color="{x:Static local:AppColors.Border}" Opacity="0.6" />
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <Label x:Name="statusLabel"
+               Grid.Row="2"
+               Padding="22,4,20,10"
+               FontSize="12"
+               TextColor="{x:Static local:AppColors.TextSecondary}"
+               Text="Готово" />
+
+        <Grid x:Name="selectOverlay"
+              Grid.RowSpan="3"
+              IsVisible="False"
+              BackgroundColor="#59000000">
+            <Border WidthRequest="440"
+                    MaximumHeightRequest="560"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Padding="18,16"
+                    Stroke="{x:Static local:AppColors.Border}"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 8"
+                    BackgroundColor="{x:Static local:AppColors.Surface}">
+                <Grid RowDefinitions="Auto,*,Auto" RowSpacing="12">
+                    <Label x:Name="selectTitle"
+                           FontSize="15"
+                           FontAttributes="Bold"
+                           TextColor="{x:Static local:AppColors.Text}" />
+                    <ScrollView Grid.Row="1">
+                        <VerticalStackLayout x:Name="selectOptions" Spacing="6" />
+                    </ScrollView>
+                    <Button Grid.Row="2"
+                            Text="Скасувати"
+                            Style="{StaticResource ExitBtn}"
+                            HorizontalOptions="End"
+                            Clicked="SelectCancel_Clicked" />
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</ContentPage>
