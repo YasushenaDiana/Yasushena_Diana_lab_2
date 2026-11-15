@@ -1,0 +1,22 @@
+# результати збірки .NET
+[Bb]in/
+[Oo]bj/
+TestResults/
+*.log
+
+# зібрані програми macOS / iOS
+*.app
+*.dSYM
+*.ipa
+
+# налаштування редакторів
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.DotSettings.user
+
+# системні файли
+.DS_Store
+Thumbs.db
