@@ -23,6 +23,7 @@ public partial class MainPage : ContentPage
 
 	private readonly XmlAttributeReader attributeReader = new();
 	private readonly XslTransformer transformer = new();
+	private readonly XmlResultWriter resultWriter = new();
 	private readonly FileDialogService fileDialogs = new();
 	private readonly Dictionary<string, Label> attributeLabels;
 	private readonly Dictionary<string, string> attributeCaptions = new()
@@ -40,7 +41,7 @@ public partial class MainPage : ContentPage
 	private string? xmlPath;
 	private bool isExiting;
 	private TaskCompletionSource<string?>? selection;
-	private List<Scientist> results = [];
+	private List<Scientist>? results;
 
 	public MainPage()
 	{
@@ -115,11 +116,24 @@ public partial class MainPage : ContentPage
 			return;
 		}
 
+		if (results is { Count: 0 })
+		{
+			await ShowMessage("HTML", "Немає результатів пошуку для збереження.");
+			return;
+		}
+
 		try
 		{
 			var xslPath = await fileDialogs.GetXslPathAsync();
 			var htmlPath = fileDialogs.GetTemporaryHtmlPath(xmlPath);
-			transformer.Transform(xmlPath, xslPath, htmlPath);
+			var sourcePath = xmlPath;
+			if (results is not null)
+			{
+				sourcePath = Path.Combine(Path.GetDirectoryName(htmlPath)!, "search_results.xml");
+				resultWriter.Save(results, sourcePath);
+			}
+
+			transformer.Transform(sourcePath, xslPath, htmlPath);
 
 			var savedPath = await fileDialogs.SaveHtmlAsync(htmlPath);
 			if (savedPath is null)
@@ -246,7 +260,7 @@ public partial class MainPage : ContentPage
 
 	private void ResetResults()
 	{
-		results = [];
+		results = null;
 		resultsView.ItemsSource = null;
 		resultsHeader.Text = "";
 		emptyLabel.Text = xmlPath is null

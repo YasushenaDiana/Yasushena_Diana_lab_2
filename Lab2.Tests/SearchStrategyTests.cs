@@ -169,6 +169,36 @@ public class SearchStrategyTests
 		}
 	}
 
+	[Fact]
+	public void HtmlFromSearchResults_ContainsOnlyFoundScientists()
+	{
+		var id = Guid.NewGuid().ToString("N");
+		var resultPath = Path.Combine(Path.GetTempPath(), $"results_{id}.xml");
+		var htmlPath = Path.Combine(Path.GetTempPath(), $"results_{id}.html");
+		try
+		{
+			var criteria = new SearchCriteria { Faculty = "Фізичний факультет" };
+			var found = new DomSearchStrategy().Search(XmlPath, criteria);
+			new XmlResultWriter().Save(found, resultPath);
+			new XslTransformer().Transform(resultPath, XslPath, htmlPath);
+
+			var html = File.ReadAllText(htmlPath);
+			Assert.Contains("Кількість науковців: 3", html);
+			Assert.Contains("Олійник Тарас Богданович", html);
+			Assert.Contains("Професор (07.07.2010)", html);
+			Assert.Contains("Доцент (дата не вказана)", html);
+			Assert.DoesNotContain("Коваленко", html);
+
+			var reread = new LinqSearchStrategy().Search(resultPath, criteria);
+			Assert.Equal(found.Select(Describe), reread.Select(Describe));
+		}
+		finally
+		{
+			File.Delete(resultPath);
+			File.Delete(htmlPath);
+		}
+	}
+
 	private static string Describe(Scientist s) =>
 		$"{s.FullName}|{s.Faculty}|{s.Department}|{s.Degree}|{string.Join(";", s.Titles)}";
 }
